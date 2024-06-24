@@ -1,0 +1,21 @@
+- name: Update and Upgrade
+  apt: 
+    update_cache: true
+    upgrade: dist
+  tags: 
+  - deps
+
+- name: lightdm
+  apt: 
+    name: lightdm
+    state: present
+  tags: 
+  - deps
+
+- name: chrome
+  apt: 
+    name: chromium-browser
+    state: present
+  tags: 
+  - deps
+

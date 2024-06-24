@@ -1,0 +1,15 @@
+- hosts: localhost
+  become: true
+  pre_tasks: 
+    - name: Update Cache
+      apt: 
+        update_cache: true
+      tags: 
+        - deps
+        - scripts
+        - api
+    tasks: 
+    - include_tasks: tasks/deps.yml
+    - include_tasks: tasks/scripts
+      # - include_tasks: tasks/api # NOTE: need to build api first before I know how I will clone the GO executable down and such. will also create the systemd service here.
+
