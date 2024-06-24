@@ -8,9 +8,9 @@
         - deps
         - scripts
         - api
-    tasks: 
-      - include_tasks: tasks/deps.yml
-      - include_tasks: tasks/user.yml
-      - include_tasks: tasks/scripts.yml
-      # - include_tasks: tasks/api # NOTE: need to build api first before I know how I will clone the GO executable down and such. will also create the systemd service here.
+  tasks: 
+    - include_tasks: tasks/deps.yml
+    - include_tasks: tasks/user.yml
+    - include_tasks: tasks/scripts.yml
+# - include_tasks: tasks/api # NOTE: need to build api first before I know how I will clone the GO executable down and such. will also create the systemd service here.
 
