@@ -1,0 +1,26 @@
+- name: Create digippi user
+  user: 
+    name: digipi
+    shell: /bin/bash
+    create_home: yes
+    password: "*"
+  tags: 
+    - user
+  
+- name: Disable password for user
+  command: passwd -d digipi
+  tags: 
+    - user
+  
+- name: Config autologin for Digipi
+  copy: 
+    dest: /etc/lightdm/lightdm.conf
+    content: |
+      [SeatDefaults]
+      autologin-user=digipi
+      autologin-user-timeout=0
+      user-session=LXDE-pi
+      greeter-session=lightdm-greeter
+  tags: 
+    - user
+

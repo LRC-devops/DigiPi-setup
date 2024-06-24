@@ -1,11 +1,11 @@
 - name: Create Kiosk Script
   copy: 
-    dest: /home/pi/kiosk.sh
+    dest: /home/digipi/kiosk.sh
     content: |
       #!/bin/bash
       chromium-browser --noerrdialogs --disable-infobars --kiosk http://your-url-here --incognito --disable-translate
-    owner: pi
-    group: pi
+    owner: digipi
+    group: digipi
     mode: '0755'
   tags: 
   - scripts
@@ -13,8 +13,12 @@
 
 - name: Update autostart file
   lineinfile:
-    path: /etc/xdg/lxsession/LXDE-pi/autostart
-    line: "@/home/pi/kiosk.sh"
+    path: /home/digipi/.config/lxsession/LXDE-pi/autostart
+    line: "@/home/digipi/kiosk.sh"
     create: yes
+    owner: digipi
+    group: digipi
+  tags: 
+    - user
   tags: 
   - scripts
